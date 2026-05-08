@@ -200,7 +200,7 @@ Csak a fenti ID-kat használd. Légy természetes és segítőkész.`;
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-3-haiku-20240307',
+          model: 'claude-sonnet-4-20250514',
           max_tokens: 1500,
           system: systemPrompt,
           messages: newHistory
