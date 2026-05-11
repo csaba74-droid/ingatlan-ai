@@ -516,4 +516,295 @@ MAGYAR NYELVHELYESSÉG:
       
       let result;
       try {
-        const clean = rawText.replace(/```json|```/g, '').replace(/[
+        const clean = rawText.replace(/```json|```/g, '').trim();
+        result = JSON.parse(clean);
+      } catch(parseErr) {
+        try {
+          const m = rawText.indexOf('{');
+          const n = rawText.lastIndexOf('}');
+          if (m !== -1 && n !== -1) {
+            result = JSON.parse(rawText.slice(m, n + 1));
+          } else {
+            result = { bevezeto: rawText, talalatok: [], alternativa: null, zaro: null };
+          }
+        } catch(e2) {
+          result = { bevezeto: rawText, talalatok: [], alternativa: null, zaro: null };
+        }
+      }
+
+      const newTurn = turnCount + 1;
+      setTurnCount(newTurn);
+      setHistory([...newHistory, { role: 'assistant', content: rawText }]);
+      setMessages(prev => [...prev, { role: 'ai', result }]);
+      
+      // Show lead form if AI signals it and not already captured
+      if (result.lead_capture && !leadCaptured && newTurn >= 4) {
+        setTimeout(() => setShowLeadForm(true), 800);
+      }
+    } catch (err) {
+      setMessages(prev => [...prev, { role: 'ai', error: err.message }]);
+    }
+    setBusy(false);
+    setTimeout(() => inputRef.current?.focus(), 100);
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(input); }
+  }
+
+  const suggestions = [
+    'Kisgyermekes család vagyunk, kert kellene',
+    'Home office-hoz keresek lakást',
+    'Befektetésnek keresek olcsóbbat',
+    'Dunára néző, teraszos lakás'
+  ];
+
+  return (
+    <>
+      <Head>
+        <title>IngatlanAI – Szabadszavas Kereső</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+      </Head>
+
+      <div style={{
+        minHeight: '100vh',
+        background: '#f0f3f7',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 24,
+        fontFamily: "'DM Sans', sans-serif"
+      }}>
+        <div style={{ width: '100%', maxWidth: 680 }}>
+
+          {/* Header label */}
+          <div style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#96a7b5', marginBottom: 12, paddingLeft: 4 }}>
+            Beágyazható widget - ingatlaniroda honlapjára
+          </div>
+
+          {/* Chat widget */}
+          <div style={{
+            background: '#fff',
+            borderRadius: 16,
+            boxShadow: '0 8px 40px rgba(28,43,58,0.12), 0 2px 8px rgba(28,43,58,0.06)',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+            height: 680,
+            border: '0.5px solid rgba(28,43,58,0.18)'
+          }}>
+
+            {/* Header */}
+            <div style={{ background: '#1C2B3A', padding: '18px 24px', display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0 }}>
+              <div style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(201,150,58,0.18)', border: '0.5px solid rgba(201,150,58,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>🏠</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: '#fff', letterSpacing: -0.3 }}>IngatlanAI</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 1 }}>Írja le szabadon, mit keres - mindent megértünk</div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'rgba(255,255,255,0.55)' }}>
+                <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 0 2px rgba(74,222,128,0.25)' }}></div>
+                Online
+              </div>
+            </div>
+
+            {/* Messages */}
+            <div style={{ flex: 1, overflowY: 'auto', padding: '20px 20px 10px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+
+              {/* Welcome */}
+              <div style={{ display: 'flex', gap: 10, alignItems: 'flex-end' }}>
+                <div style={{ width: 30, height: 30, borderRadius: '50%', background: '#1C2B3A', color: '#C9963A', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontFamily: "'DM Serif Display', serif", flexShrink: 0 }}>AI</div>
+                <div style={{ maxWidth: '80%' }}>
+                  <div style={{ background: '#f7f8fa', border: '0.5px solid rgba(28,43,58,0.10)', borderRadius: '4px 18px 18px 18px', padding: '11px 15px', fontSize: 14, lineHeight: 1.6, color: '#1C2B3A' }}>
+                    Üdvözlöm! Írja le szabadon, milyen ingatlant keres. Nem kell formanyomtatvány - meséljen az igényeiről természetesen.
+                  </div>
+                </div>
+              </div>
+
+              {/* Messages */}
+              {messages.map((msg, i) => (
+                <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-end', flexDirection: msg.role === 'user' ? 'row-reverse' : 'row' }}>
+                  <div style={{
+                    width: 30, height: 30, borderRadius: '50%', flexShrink: 0,
+                    background: msg.role === 'user' ? '#C9963A' : '#1C2B3A',
+                    color: msg.role === 'user' ? '#fff' : '#C9963A',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: msg.role === 'user' ? 12 : 13,
+                    fontFamily: msg.role === 'ai' ? "'DM Serif Display', serif" : 'inherit'
+                  }}>
+                    {msg.role === 'user' ? '👤' : 'AI'}
+                  </div>
+                  <div style={{ maxWidth: '82%' }}>
+                    {msg.role === 'user' ? (
+                      <div style={{ background: '#1C2B3A', color: '#fff', borderRadius: '18px 4px 18px 18px', padding: '11px 15px', fontSize: 14, lineHeight: 1.6 }}>
+                        {msg.text}
+                      </div>
+                    ) : msg.error ? (
+                      <div style={{ background: '#fff3f3', border: '0.5px solid #ffcccc', borderRadius: '4px 18px 18px 18px', padding: '11px 15px', fontSize: 13, color: '#c0392b' }}>
+                        Hiba: {msg.error}
+                      </div>
+                    ) : (
+                      <div style={{ background: '#f7f8fa', border: '0.5px solid rgba(28,43,58,0.10)', borderRadius: '4px 18px 18px 18px', padding: '12px 15px', fontSize: 14, lineHeight: 1.6, color: '#1C2B3A' }}>
+                        {msg.result.bevezeto && <p style={{ marginBottom: 8 }}>{msg.result.bevezeto}</p>}
+                        {(msg.result.talalatok || []).map((t, ti) => {
+                          const prop = PROPERTIES.find(p => p.id === t.id);
+                          if (!prop) return null;
+                          return <PropCard key={ti} prop={prop} match={t} isTop={ti === 0} />;
+                        })}
+                        {msg.result.alternativa && (
+                          <div style={{ marginTop: 10, background: '#e8eff6', borderRadius: 10, padding: '9px 12px', fontSize: 13, color: '#2e4a63', lineHeight: 1.5 }}>
+                            💡 {msg.result.alternativa}
+                          </div>
+                        )}
+                        {msg.result.zaro && (
+                          <p style={{ marginTop: 10, fontSize: 12.5, color: '#5a6b7a' }}>{msg.result.zaro}</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+
+              {/* Typing indicator */}
+              {busy && (
+                <div style={{ display: 'flex', gap: 10, alignItems: 'flex-end' }}>
+                  <div style={{ width: 30, height: 30, borderRadius: '50%', background: '#1C2B3A', color: '#C9963A', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontFamily: "'DM Serif Display', serif", flexShrink: 0 }}>AI</div>
+                  <div style={{ background: '#f7f8fa', border: '0.5px solid rgba(28,43,58,0.10)', borderRadius: '4px 18px 18px 18px', padding: '13px 16px', display: 'flex', gap: 5 }}>
+                    {[0, 1, 2].map(i => (
+                      <div key={i} style={{ width: 7, height: 7, borderRadius: '50%', background: '#96a7b5', animation: `blink 1.3s ${i * 0.18}s infinite` }}></div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <div ref={bottomRef} />
+            </div>
+
+            {/* Suggestions */}
+            {showSuggestions && (
+              <div style={{ padding: '8px 20px 0', display: 'flex', gap: 6, flexWrap: 'wrap', flexShrink: 0 }}>
+                {suggestions.map((s, i) => (
+                  <button key={i} onClick={() => send(s)} style={{
+                    fontSize: 12, padding: '5px 12px', borderRadius: 20,
+                    border: '0.5px solid rgba(28,43,58,0.18)', background: '#fff',
+                    color: '#5a6b7a', cursor: 'pointer', fontFamily: 'inherit',
+                    transition: 'all .15s'
+                  }}>{s}</button>
+                ))}
+              </div>
+            )}
+
+            {/* Lead capture form */}
+            {showLeadForm && !leadCaptured && (
+              <div style={{
+                margin: '0 16px 12px', padding: '16px',
+                background: 'linear-gradient(135deg, #1C2B3A 0%, #2e4a63 100%)',
+                borderRadius: 12, flexShrink: 0
+              }}>
+                <div style={{ fontSize: 13, fontWeight: 500, color: '#C9963A', marginBottom: 4 }}>
+                  Szeretné személyesen is megnézni?
+                </div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginBottom: 12, lineHeight: 1.5 }}>
+                  Hagyja meg az adatait — kollégánk 24 órán belül felveszi a kapcsolatot!
+                </div>
+                <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
+                  <input
+                    value={leadName}
+                    onChange={e => setLeadName(e.target.value)}
+                    placeholder="Neve"
+                    style={{
+                      flex: 1, padding: '8px 12px', borderRadius: 8, border: '0.5px solid rgba(255,255,255,0.2)',
+                      background: 'rgba(255,255,255,0.1)', color: '#fff', fontSize: 13,
+                      fontFamily: "'DM Sans', sans-serif", outline: 'none'
+                    }}
+                  />
+                  <input
+                    value={leadPhone}
+                    onChange={e => setLeadPhone(e.target.value)}
+                    placeholder="Telefonszáma"
+                    style={{
+                      flex: 1, padding: '8px 12px', borderRadius: 8, border: '0.5px solid rgba(255,255,255,0.2)',
+                      background: 'rgba(255,255,255,0.1)', color: '#fff', fontSize: 13,
+                      fontFamily: "'DM Sans', sans-serif", outline: 'none'
+                    }}
+                  />
+                </div>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <button
+                    onClick={() => {
+                      if (!leadName.trim() || !leadPhone.trim()) return;
+                      setLeadCaptured(true);
+                      setShowLeadForm(false);
+                      setMessages(prev => [...prev, {
+                        role: 'ai',
+                        result: {
+                          bevezeto: ,
+                          talalatok: [], alternativa: null, zaro: null, lead_capture: false
+                        }
+                      }]);
+                    }}
+                    style={{
+                      flex: 1, padding: '9px', borderRadius: 8, border: 'none',
+                      background: '#C9963A', color: '#fff', fontSize: 13, fontWeight: 500,
+                      cursor: 'pointer', fontFamily: "'DM Sans', sans-serif"
+                    }}
+                  >
+                    Visszahívást kérek
+                  </button>
+                  <button
+                    onClick={() => setShowLeadForm(false)}
+                    style={{
+                      padding: '9px 14px', borderRadius: 8,
+                      border: '0.5px solid rgba(255,255,255,0.2)',
+                      background: 'transparent', color: 'rgba(255,255,255,0.5)',
+                      fontSize: 12, cursor: 'pointer', fontFamily: "'DM Sans', sans-serif"
+                    }}
+                  >
+                    Később
+                  </button>
+                </div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
+                  Adatait bizalmasan kezeljük, harmadik félnek nem adjuk át.
+                </div>
+              </div>
+            )}
+
+            {/* Input */}
+            <div style={{ padding: '12px 16px', borderTop: '0.5px solid rgba(28,43,58,0.10)', display: 'flex', gap: 10, alignItems: 'flex-end', flexShrink: 0 }}>
+              <div style={{ flex: 1, background: '#f7f8fa', border: '0.5px solid rgba(28,43,58,0.18)', borderRadius: 24, padding: '10px 16px', display: 'flex', alignItems: 'flex-end' }}>
+                <textarea
+                  ref={inputRef}
+                  value={input}
+                  onChange={e => { setInput(e.target.value); e.target.style.height = 'auto'; e.target.style.height = Math.min(e.target.scrollHeight, 96) + 'px'; }}
+                  onKeyDown={handleKey}
+                  placeholder="Pl. csendes utca, 2 gyereknek is elférünk, kutyánk van..."
+                  rows={1}
+                  style={{
+                    flex: 1, border: 'none', background: 'transparent',
+                    fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: '#1C2B3A',
+                    resize: 'none', outline: 'none', lineHeight: 1.5, maxHeight: 96
+                  }}
+                />
+              </div>
+              <button onClick={() => send(input)} disabled={busy || !input.trim()} style={{
+                width: 38, height: 38, borderRadius: '50%', background: busy || !input.trim() ? '#96a7b5' : '#1C2B3A',
+                border: 'none', color: '#C9963A', cursor: busy || !input.trim() ? 'not-allowed' : 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 17, flexShrink: 0, transition: 'background .15s'
+              }}>↑</button>
+            </div>
+            <div style={{ fontSize: 11, color: '#96a7b5', textAlign: 'center', padding: '0 16px 10px', flexShrink: 0 }}>
+              Az AI az ingatlanok teljes leírásában keres - próbálja természetes mondatokkal
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes blink { 0%,70%,100%{transform:scale(0.7);opacity:0.4} 35%{transform:scale(1);opacity:1} }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        textarea::placeholder { color: #96a7b5; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: rgba(28,43,58,0.18); border-radius: 2px; }
+      `}</style>
+    </>
+  );
+}
