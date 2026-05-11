@@ -454,7 +454,12 @@ VÁLASZ FORMÁTUM (csak JSON, semmi más, nincs markdown keret):
   "zaro": "rövid záró üzenet"
 }
 
-Csak a fenti ID-kat használd. Légy természetes és segítőkész.`;
+FONTOS SZABÁLYOK:
+- Csak a fenti adatbázisban szereplő ingatlanok ID-jait használd (1-25).
+- MINDIG keresd végig AZ ÖSSZES ingatlant — beleértve a Pest megyei városokat is (Érd, Budaörs, Szigetszentmiklós, Dunakeszi, Vecsés, Göd, Gyál, Törökbálint, Fót, Üllő, Gödöllő).
+- Ha valaki Pest megyét, agglomerációt vagy konkrét várost kér, nézd meg a "kerulet" mezőt minden ingatlannál.
+- Ha nincs pontos egyezés, ajánlj hasonlót és magyarázd el miért.
+- Légy természetes és segítőkész magyarul.`;
 
   async function send(text) {
     if (!text.trim() || busy) return;
