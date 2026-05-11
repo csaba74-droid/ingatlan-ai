@@ -42,7 +42,7 @@ const PROPERTIES = [
     emelet: "fsz./4",
     tajolas: "dél",
     allapot: "felújítandó",
-    leiras: "Kertes, földszinti lakás Zuglóban — ritka lehetőség! Az 50 m²-es, kizárólagos használatú kert gyerekeknek és állatoknak ideális. Déli tájolású, sok fény. Felújítandó állapot, de a szerkezet kiváló. A Városliget gyalogosan 12 percre. Iskola, óvoda, bolt mind 500 méteren belül. Kisgyermekes vagy állatos egyéneknek ajánljuk.",
+    leiras: "Kertes, földszinti lakás Zuglóban - ritka lehetőség! Az 50 m²-es, kizárólagos használatú kert gyerekeknek és állatoknak ideális. Déli tájolású, sok fény. Felújítandó állapot, de a szerkezet kiváló. A Városliget gyalogosan 12 percre. Iskola, óvoda, bolt mind 500 méteren belül. Kisgyermekes vagy állatos egyéneknek ajánljuk.",
     tags: ["kert","gyerekbarát","kisállat ok","csendes","felújítandó","déli tájolás"],
   },
   {
@@ -184,7 +184,7 @@ const PROPERTIES = [
     emelet: "földszint + tetőtér",
     tajolas: "dél-kelet",
     allapot: "felújított",
-    leiras: "Felújított ikerház fele Pestszentlőrincen, 200 m²-es gondozott kerttel. Három szoba, tágas nappali, két fürdőszoba. A tetőtéren extra dolgozószoba kialakítva — home office-hoz tökéletes. Garázs és tárolóhelyiség. Csendes, fás utca. Busz megálló 4 percre, Ferihegy 15 percre autóval. Kisgyermekes és home office-t igénylő családoknak egyaránt ajánlott.",
+    leiras: "Felújított ikerház fele Pestszentlőrincen, 200 m²-es gondozott kerttel. Három szoba, tágas nappali, két fürdőszoba. A tetőtéren extra dolgozószoba kialakítva - home office-hoz tökéletes. Garázs és tárolóhelyiség. Csendes, fás utca. Busz megálló 4 percre, Ferihegy 15 percre autóval. Kisgyermekes és home office-t igénylő családoknak egyaránt ajánlott.",
     tags: ["kert","garázs","home office","felújított","csendes","tetőtér"],
   },
   {
@@ -213,7 +213,7 @@ const PROPERTIES = [
     emelet: "földszint + emelet",
     tajolas: "dél",
     allapot: "jó állapotú",
-    leiras: "Tágas kétszintes családi ház Érd legkedveltebb részén, Parkvárosban. 400 m²-es gondozott kert, garázs, két fürdőszoba. Nagy terasz, pergola. Déli tájolású kert, egész nap napos. Iskola, óvoda, orvosi rendelő, bolt 5 percen belül. Érd-Pfeiffer HÉV megálló 8 percre — Budapestre 35 perc. Csendes lakóterület, jó szomszédsággal.",
+    leiras: "Tágas kétszintes családi ház Érd legkedveltebb részén, Parkvárosban. 400 m²-es gondozott kert, garázs, két fürdőszoba. Nagy terasz, pergola. Déli tájolású kert, egész nap napos. Iskola, óvoda, orvosi rendelő, bolt 5 percen belül. Érd-Pfeiffer HÉV megálló 8 percre - Budapestre 35 perc. Csendes lakóterület, jó szomszédsággal.",
     tags: ["kert","garázs","csendes","déli tájolás","HÉV-közel","4 szoba","terasz"],
   },
   {
@@ -255,7 +255,7 @@ const PROPERTIES = [
     emelet: "földszint + tetőtér",
     tajolas: "dél",
     allapot: "felújított",
-    leiras: "Gondosan felújított kétszintes ház Dunakeszin, az Alagjárás közelében. 350 m²-es rendezett kert, garázs, tároló. Négy szoba, két fürdőszoba, tágas nappali. Új tető, nyílászárók, fűtés. HÉV megálló gyalogosan 6 percre — Budapest Nyugati 30 perc. Iskola, óvoda, bevásárlás közelben. Kutyásoknak, gyermekes családoknak ideális.",
+    leiras: "Gondosan felújított kétszintes ház Dunakeszin, az Alagjárás közelében. 350 m²-es rendezett kert, garázs, tároló. Négy szoba, két fürdőszoba, tágas nappali. Új tető, nyílászárók, fűtés. HÉV megálló gyalogosan 6 percre - Budapest Nyugati 30 perc. Iskola, óvoda, bevásárlás közelben. Kutyásoknak, gyermekes családoknak ideális.",
     tags: ["kert","garázs","felújított","HÉV-közel","csendes","kisállat ok","4 szoba"],
   },
   {
@@ -269,7 +269,7 @@ const PROPERTIES = [
     emelet: "földszint",
     tajolas: "kelet",
     allapot: "felújítandó",
-    leiras: "Felújítandó kis ház Vecsésen, 400 m²-es telken, garázzsal. Három szoba, fürdőszoba, pince. A szerkezet rendben, belső megújítást igényel. Nagy kert, gyümölcsfák. Ferihegyi repülőtér 5 percre — reptér mellett dolgozóknak ideális. Busz és vasút elérhető közelségben. Jó ár-érték arány, befektetési célra is alkalmas.",
+    leiras: "Felújítandó kis ház Vecsésen, 400 m²-es telken, garázzsal. Három szoba, fürdőszoba, pince. A szerkezet rendben, belső megújítást igényel. Nagy kert, gyümölcsfák. Ferihegyi repülőtér 5 percre - reptér mellett dolgozóknak ideális. Busz és vasút elérhető közelségben. Jó ár-érték arány, befektetési célra is alkalmas.",
     tags: ["kert","garázs","felújítandó","olcsó","repülőtér-közel","befektetés","gyümölcsös"],
   },
   {
@@ -283,7 +283,7 @@ const PROPERTIES = [
     emelet: "földszint + emelet",
     tajolas: "dél-kelet",
     allapot: "jó állapotú",
-    leiras: "Kellemes kétszintes ház Gödön, a Duna-parttól 5 percre. 450 m²-es, gondozott kert. Négy szoba, két fürdőszoba, garázs. Napelem, korszerű fűtés. A Gödi strand és a Duna-part sétatávolságra — nyaralóként és főlakásként is kiváló. HÉV megálló 7 percre, Budapest Nyugati 40 perc. Csendes, kellemes szomszédság.",
+    leiras: "Kellemes kétszintes ház Gödön, a Duna-parttól 5 percre. 450 m²-es, gondozott kert. Négy szoba, két fürdőszoba, garázs. Napelem, korszerű fűtés. A Gödi strand és a Duna-part sétatávolságra - nyaralóként és főlakásként is kiváló. HÉV megálló 7 percre, Budapest Nyugati 40 perc. Csendes, kellemes szomszédság.",
     tags: ["kert","Duna-közel","napelem","garázs","strand-közel","HÉV-közel","4 szoba"],
   },
   // ── PEST MEGYE IKERHÁZAK ────────────────────────────────
@@ -312,7 +312,7 @@ const PROPERTIES = [
     emelet: "földszint + emelet",
     tajolas: "dél-nyugat",
     allapot: "újépítésű",
-    leiras: "Prémium újépítésű ikerház fele Törökbálinton, 280 m²-es kerttel. Négy szoba, három fürdőszoba, garázs kettő autónak. Okosotthon rendszer, napelem, padlófűtés az egész házban. Tágas terasz, fedett pergola. Zöld, csendes környezet, kitűnő levegő. M1 autópálya 5 percre — Budapest 20 perc. Prémium kivitelezés, kiváló minőség.",
+    leiras: "Prémium újépítésű ikerház fele Törökbálinton, 280 m²-es kerttel. Négy szoba, három fürdőszoba, garázs kettő autónak. Okosotthon rendszer, napelem, padlófűtés az egész házban. Tágas terasz, fedett pergola. Zöld, csendes környezet, kitűnő levegő. M1 autópálya 5 percre - Budapest 20 perc. Prémium kivitelezés, kiváló minőség.",
     tags: ["újépítésű","kert","kétállásos garázs","napelem","okosotthon","padlófűtés","prémium"],
   },
   {
@@ -326,7 +326,7 @@ const PROPERTIES = [
     emelet: "földszint + tetőtér",
     tajolas: "dél",
     allapot: "felújított",
-    leiras: "Felújított ikerház fele Fóton, 220 m²-es saját kerttel és garázzsal. Három szoba, két fürdőszoba, tetőtéri dolgozó. Új tető, nyílászárók, konyha, fürdőszoba. Csendes, fás utca. Iskola, óvoda, bolt közelben. Vasútállomás 10 percre — Budapest Keleti 35 perc. Kutyásoknak, gyermekes családoknak kiváló választás.",
+    leiras: "Felújított ikerház fele Fóton, 220 m²-es saját kerttel és garázzsal. Három szoba, két fürdőszoba, tetőtéri dolgozó. Új tető, nyílászárók, konyha, fürdőszoba. Csendes, fás utca. Iskola, óvoda, bolt közelben. Vasútállomás 10 percre - Budapest Keleti 35 perc. Kutyásoknak, gyermekes családoknak kiváló választás.",
     tags: ["kert","garázs","felújított","csendes","kisállat ok","vasútközel","home office"],
   },
   {
@@ -340,7 +340,7 @@ const PROPERTIES = [
     emelet: "földszint",
     tajolas: "kelet",
     allapot: "közepes",
-    leiras: "Belköltözhető ikerház fele Üllőn, 180 m²-es kerttel. Három szoba, fürdőszoba, garázs. Közepes állapot, kisebb festési munkálatokat igényel. Nagy kert, gyümölcsfák. Ferihegy repülőtér 10 percre — reptér melletti munkakörben dolgozóknak tökéletes. Busz és vasút elérhető közelségben. Ára alapján kivételes lehetőség.",
+    leiras: "Belköltözhető ikerház fele Üllőn, 180 m²-es kerttel. Három szoba, fürdőszoba, garázs. Közepes állapot, kisebb festési munkálatokat igényel. Nagy kert, gyümölcsfák. Ferihegy repülőtér 10 percre - reptér melletti munkakörben dolgozóknak tökéletes. Busz és vasút elérhető közelségben. Ára alapján kivételes lehetőség.",
     tags: ["kert","garázs","belköltözhető","olcsó","repülőtér-közel","gyümölcsös"],
   },
   {
@@ -354,7 +354,7 @@ const PROPERTIES = [
     emelet: "földszint + emelet",
     tajolas: "dél",
     allapot: "jó állapotú",
-    leiras: "Szép állapotú ikerház fele Gödöllő belvárosában, a kastély közelében. 250 m²-es gondozott kerttel, garázzsal. Négy szoba, két fürdőszoba, tágas nappali. Déli terasz, pergola. Gödöllő kulturális élete, éttermei, piaca sétatávolságra. HÉV megálló 8 percre — Budapest Keleti 45 perc. Kiváló levegő, természetközeliség.",
+    leiras: "Szép állapotú ikerház fele Gödöllő belvárosában, a kastély közelében. 250 m²-es gondozott kerttel, garázzsal. Négy szoba, két fürdőszoba, tágas nappali. Déli terasz, pergola. Gödöllő kulturális élete, éttermei, piaca sétatávolságra. HÉV megálló 8 percre - Budapest Keleti 45 perc. Kiváló levegő, természetközeliség.",
     tags: ["kert","garázs","kastély-közel","HÉV-közel","csendes","déli tájolás","4 szoba"],
   },
 ];
@@ -456,13 +456,13 @@ VÁLASZ FORMÁTUM (csak JSON, semmi más, nincs markdown keret):
 
 FONTOS SZABÁLYOK:
 - Csak a fenti adatbázisban szereplő ingatlanok ID-jait használd (1-25).
-- MINDIG keresd végig AZ ÖSSZES ingatlant — beleértve a Pest megyei városokat is (Érd, Budaörs, Szigetszentmiklós, Dunakeszi, Vecsés, Göd, Gyál, Törökbálint, Fót, Üllő, Gödöllő).
+- MINDIG keresd végig AZ ÖSSZES ingatlant - beleértve a Pest megyei városokat is (Érd, Budaörs, Szigetszentmiklós, Dunakeszi, Vecsés, Göd, Gyál, Törökbálint, Fót, Üllő, Gödöllő).
 - Ha valaki Pest megyét, agglomerációt vagy konkrét várost kér, nézd meg a "kerulet" mezőt minden ingatlannál.
 - Ha nincs pontos egyezés, ajánlj hasonlót és magyarázd el miért.
 
 MAGYAR NYELVHELYESSÉG:
 - Helyes igekötő-használat: "Végignéztem" (NEM: "Néztem végig"), "Megtaláltam" (NEM: "Találtam meg"), "Kiválasztottam" (NEM: "Választottam ki"), "Felhoztam" (NEM: "Hoztam fel")
-- Természetes, folyékony magyar mondatok — ne angol tükörfordítás
+- Természetes, folyékony magyar mondatok - ne angol tükörfordítás
 - Kerüld: "Az Ön által keresett", "A következő ingatlanokat találtam"
 - Használj természetes fordulatokat: "Végignéztem a kínálatunkat", "Úgy látom", "Szerintem ez lehet a jó választás", "Azt javaslom"
 - Olyan legyen a hangnem mintha egy tapasztalt magyar ingatlanközvetítő mondaná élőben, közvetlenül
@@ -484,7 +484,7 @@ MAGYAR NYELVHELYESSÉG:
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-haiku-4-5-20251001',
-          max_tokens: 1500,
+          max_tokens: 2000,
           system: systemPrompt,
           messages: newHistory
         })
@@ -494,8 +494,21 @@ MAGYAR NYELVHELYESSÉG:
       if (!res.ok) throw new Error(data?.error?.message || 'API hiba');
 
       const rawText = (data.content || []).map(c => c.text || '').join('');
-      const clean = rawText.replace(/```json|```/g, '').trim();
-      const result = JSON.parse(clean);
+      
+      let result;
+      try {
+        const clean = rawText.replace(/```json|```/g, '').replace(/[ -
+-]/g, '').trim();
+        result = JSON.parse(clean);
+      } catch(parseErr) {
+        const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          result = JSON.parse(jsonMatch[0].replace(/[ -
+-]/g, ''));
+        } else {
+          result = { bevezeto: rawText, talalatok: [], alternativa: null, zaro: null };
+        }
+      }
 
       setHistory([...newHistory, { role: 'assistant', content: rawText }]);
       setMessages(prev => [...prev, { role: 'ai', result }]);
@@ -538,7 +551,7 @@ MAGYAR NYELVHELYESSÉG:
 
           {/* Header label */}
           <div style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#96a7b5', marginBottom: 12, paddingLeft: 4 }}>
-            Beágyazható widget — ingatlaniroda honlapjára
+            Beágyazható widget - ingatlaniroda honlapjára
           </div>
 
           {/* Chat widget */}
@@ -558,7 +571,7 @@ MAGYAR NYELVHELYESSÉG:
               <div style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(201,150,58,0.18)', border: '0.5px solid rgba(201,150,58,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>🏠</div>
               <div style={{ flex: 1 }}>
                 <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: '#fff', letterSpacing: -0.3 }}>IngatlanAI</div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 1 }}>Írja le szabadon, mit keres — mindent megértünk</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 1 }}>Írja le szabadon, mit keres - mindent megértünk</div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'rgba(255,255,255,0.55)' }}>
                 <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 0 2px rgba(74,222,128,0.25)' }}></div>
@@ -574,7 +587,7 @@ MAGYAR NYELVHELYESSÉG:
                 <div style={{ width: 30, height: 30, borderRadius: '50%', background: '#1C2B3A', color: '#C9963A', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontFamily: "'DM Serif Display', serif", flexShrink: 0 }}>AI</div>
                 <div style={{ maxWidth: '80%' }}>
                   <div style={{ background: '#f7f8fa', border: '0.5px solid rgba(28,43,58,0.10)', borderRadius: '4px 18px 18px 18px', padding: '11px 15px', fontSize: 14, lineHeight: 1.6, color: '#1C2B3A' }}>
-                    Üdvözlöm! Írja le szabadon, milyen ingatlant keres. Nem kell formanyomtatvány — meséljen az igényeiről természetesen.
+                    Üdvözlöm! Írja le szabadon, milyen ingatlant keres. Nem kell formanyomtatvány - meséljen az igényeiről természetesen.
                   </div>
                 </div>
               </div>
@@ -675,7 +688,7 @@ MAGYAR NYELVHELYESSÉG:
               }}>↑</button>
             </div>
             <div style={{ fontSize: 11, color: '#96a7b5', textAlign: 'center', padding: '0 16px 10px', flexShrink: 0 }}>
-              Az AI az ingatlanok teljes leírásában keres — próbálja természetes mondatokkal
+              Az AI az ingatlanok teljes leírásában keres - próbálja természetes mondatokkal
             </div>
           </div>
         </div>
