@@ -472,6 +472,7 @@ A "lead_capture" mezőt állítsd TRUE-ra ha MIND a három teljesül:
 2. A felhasználó konkrét ingatlanról kérdez részleteket (mikor nézhető meg, mekkora a telek, mi az ár, stb.)
 3. Egyértelmu vásárlási szándék látszik (megnézné, érdekli, ajánlatot tenne)
 Ha TRUE, a "zaro" mezőbe NE írj lead capture felkérést - azt a rendszer automatikusan kezeli.
+SOHA ne kérj nevet, telefonszámot, emailt vagy elérhetőséget a szövegben - ezt a rendszer automatikusan kezeli egy külön űrlapon.
 
 FONTOS SZABÁLYOK:
 - Csak a fenti adatbázisban szereplő ingatlanok ID-jait használd (1-25).
