@@ -737,7 +737,7 @@ MAGYAR NYELVHELYESSÉG:
                       setMessages(prev => [...prev, {
                         role: 'ai',
                         result: {
-                          bevezeto: ,
+                          bevezeto: 'Köszönöm! Kollégánk hamarosan felveszi a kapcsolatot. Addig is szívesen válaszolok további kérdésekre!',
                           talalatok: [], alternativa: null, zaro: null, lead_capture: false
                         }
                       }]);
