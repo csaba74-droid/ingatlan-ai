@@ -412,6 +412,11 @@ export default function Home() {
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [leadCaptured, setLeadCaptured] = useState(false);
+  const [turnCount, setTurnCount] = useState(0);
+  const [showLeadForm, setShowLeadForm] = useState(false);
+  const [leadName, setLeadName] = useState('');
+  const [leadPhone, setLeadPhone] = useState('');
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -451,8 +456,15 @@ VÁLASZ FORMÁTUM (csak JSON, semmi más, nincs markdown keret):
     }
   ],
   "alternativa": "alternatíva szöveg vagy null",
-  "zaro": "rövid záró üzenet"
+  "zaro": "rövid záró üzenet",
+  "lead_capture": false
 }
+
+A "lead_capture" mezőt állítsd TRUE-ra ha MIND a három teljesül:
+1. Ez legalább a 4. üzenetváltás
+2. A felhasználó konkrét ingatlanról kérdez részleteket (mikor nézhető meg, mekkora a telek, mi az ár, stb.)
+3. Egyértelmu vásárlási szándék látszik (megnézné, érdekli, ajánlatot tenne)
+Ha TRUE, a "zaro" mezőbe NE írj lead capture felkérést - azt a rendszer automatikusan kezeli.
 
 FONTOS SZABÁLYOK:
 - Csak a fenti adatbázisban szereplő ingatlanok ID-jait használd (1-25).
@@ -510,8 +522,15 @@ MAGYAR NYELVHELYESSÉG:
         }
       }
 
+      const newTurn = turnCount + 1;
+      setTurnCount(newTurn);
       setHistory([...newHistory, { role: 'assistant', content: rawText }]);
       setMessages(prev => [...prev, { role: 'ai', result }]);
+      
+      // Show lead form if AI signals it and not already captured
+      if (result.lead_capture && !leadCaptured && newTurn >= 4) {
+        setTimeout(() => setShowLeadForm(true), 800);
+      }
     } catch (err) {
       setMessages(prev => [...prev, { role: 'ai', error: err.message }]);
     }
@@ -661,6 +680,81 @@ MAGYAR NYELVHELYESSÉG:
                     transition: 'all .15s'
                   }}>{s}</button>
                 ))}
+              </div>
+            )}
+
+            {/* Lead capture form */}
+            {showLeadForm && !leadCaptured && (
+              <div style={{
+                margin: '0 16px 12px', padding: '16px',
+                background: 'linear-gradient(135deg, #1C2B3A 0%, #2e4a63 100%)',
+                borderRadius: 12, flexShrink: 0
+              }}>
+                <div style={{ fontSize: 13, fontWeight: 500, color: '#C9963A', marginBottom: 4 }}>
+                  Szeretné személyesen is megnézni?
+                </div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginBottom: 12, lineHeight: 1.5 }}>
+                  Hagyja meg az adatait — kollégánk 24 órán belül felveszi a kapcsolatot!
+                </div>
+                <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
+                  <input
+                    value={leadName}
+                    onChange={e => setLeadName(e.target.value)}
+                    placeholder="Neve"
+                    style={{
+                      flex: 1, padding: '8px 12px', borderRadius: 8, border: '0.5px solid rgba(255,255,255,0.2)',
+                      background: 'rgba(255,255,255,0.1)', color: '#fff', fontSize: 13,
+                      fontFamily: "'DM Sans', sans-serif", outline: 'none'
+                    }}
+                  />
+                  <input
+                    value={leadPhone}
+                    onChange={e => setLeadPhone(e.target.value)}
+                    placeholder="Telefonszáma"
+                    style={{
+                      flex: 1, padding: '8px 12px', borderRadius: 8, border: '0.5px solid rgba(255,255,255,0.2)',
+                      background: 'rgba(255,255,255,0.1)', color: '#fff', fontSize: 13,
+                      fontFamily: "'DM Sans', sans-serif", outline: 'none'
+                    }}
+                  />
+                </div>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <button
+                    onClick={() => {
+                      if (!leadName.trim() || !leadPhone.trim()) return;
+                      setLeadCaptured(true);
+                      setShowLeadForm(false);
+                      setMessages(prev => [...prev, {
+                        role: 'ai',
+                        result: {
+                          bevezeto: ,
+                          talalatok: [], alternativa: null, zaro: null, lead_capture: false
+                        }
+                      }]);
+                    }}
+                    style={{
+                      flex: 1, padding: '9px', borderRadius: 8, border: 'none',
+                      background: '#C9963A', color: '#fff', fontSize: 13, fontWeight: 500,
+                      cursor: 'pointer', fontFamily: "'DM Sans', sans-serif"
+                    }}
+                  >
+                    Visszahívást kérek
+                  </button>
+                  <button
+                    onClick={() => setShowLeadForm(false)}
+                    style={{
+                      padding: '9px 14px', borderRadius: 8,
+                      border: '0.5px solid rgba(255,255,255,0.2)',
+                      background: 'transparent', color: 'rgba(255,255,255,0.5)',
+                      fontSize: 12, cursor: 'pointer', fontFamily: "'DM Sans', sans-serif"
+                    }}
+                  >
+                    Később
+                  </button>
+                </div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
+                  Adatait bizalmasan kezeljük, harmadik félnek nem adjuk át.
+                </div>
               </div>
             )}
 
