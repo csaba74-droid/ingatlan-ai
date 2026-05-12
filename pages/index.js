@@ -481,7 +481,7 @@ FONTOS SZABÁLYOK:
 - Ha valaki Pest megyét, agglomerációt vagy konkrét várost kér, nézd meg a "kerulet" mezőt minden ingatlannál.
 - Ha nincs pontos egyezés, ajánlj hasonlót és magyarázd el miért.
 
-NYELV: Mindig azon a nyelven válaszolj amin a felhasználó ír. Ha magyarul kérdez, magyarul válaszolj. Ha angolul, angolul. Ha németül, németül. A JSON mezők nevei maradjanak magyarul.
+NYELV - KÖTELEZŐ SZABÁLY: Mindig KIZÁRÓLAG azon a nyelven válaszolj amin a felhasználó legutóbbi üzenete volt. Ha az üzenet angol → válaszolj angolul. Ha francia → franciául. Ha német → németül. Ha magyar → magyarul. Ez felülírja az összes többi szabályt. A JSON mezők nevei mindig magyarul maradjanak.
 
 MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
 - Helyes igekötő-használat: "Végignéztem" (NEM: "Néztem végig"), "Megtaláltam" (NEM: "Találtam meg"), "Kiválasztottam" (NEM: "Választottam ki")
