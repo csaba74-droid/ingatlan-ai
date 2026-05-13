@@ -3,7 +3,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { nev, telefon, iroda_email, iroda_nev } = req.body;
+  const { nev, telefon, iroda_email, iroda_nev, ingatlan } = req.body;
   const apiKey = process.env.RESEND_API_KEY;
 
   try {
@@ -33,6 +33,11 @@ export default async function handler(req, res) {
                   <td style="padding: 10px 0; color: #5a6b7a; font-size: 13px;">Telefon:</td>
                   <td style="padding: 10px 0; color: #1C2B3A; font-size: 15px; font-weight: 500;">${telefon}</td>
                 </tr>
+                ${ingatlan ? `
+                <tr style="border-top: 1px solid #e0e6ec;">
+                  <td style="padding: 10px 0; color: #5a6b7a; font-size: 13px;">Érdeklődött:</td>
+                  <td style="padding: 10px 0; color: #1C2B3A; font-size: 13px; font-weight: 500;">${ingatlan}</td>
+                </tr>` : ''}
                 <tr style="border-top: 1px solid #e0e6ec;">
                   <td style="padding: 10px 0; color: #5a6b7a; font-size: 13px;">Időpont:</td>
                   <td style="padding: 10px 0; color: #1C2B3A; font-size: 13px;">${new Date().toLocaleString('hu-HU', {timeZone: 'Europe/Budapest'})}</td>
