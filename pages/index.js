@@ -419,6 +419,7 @@ export default function Home() {
   const [showLeadForm, setShowLeadForm] = useState(false);
   const [leadName, setLeadName] = useState('');
   const [leadPhone, setLeadPhone] = useState('');
+  const [lastProperty, setLastProperty] = useState(null);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -553,6 +554,11 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
       setTurnCount(newTurn);
       setHistory([...newHistory, { role: 'assistant', content: rawText }]);
       setMessages(prev => [...prev, { role: 'ai', result }]);
+      // Track last viewed property
+      if (result.talalatok && result.talalatok.length > 0) {
+        const prop = PROPERTIES.find(p => p.id === result.talalatok[0].id);
+        if (prop) setLastProperty(prop);
+      }
       
       // Show lead form if AI signals it and not already captured
       if (result.lead_capture && !leadCaptured && newTurn >= 4) {
@@ -770,7 +776,8 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
                           nev: leadName,
                           telefon: leadPhone,
                           iroda_email: 'lenard.csaba74@gmail.com',
-                          iroda_nev: 'Demo Iroda'
+                          iroda_nev: 'Demo Iroda',
+                          ingatlan: lastProperty ? lastProperty.cim + ' — ' + lastProperty.ar : null
                         })
                       }).catch(() => {});
                       setLeadCaptured(true);
