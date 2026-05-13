@@ -760,6 +760,17 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
                           messages: [{ role: 'user', content: 'lead mentve' }]
                         })
                       }).catch(() => {});
+                      // Send email notification
+                      await fetch('/api/send-lead-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          nev: leadName,
+                          telefon: leadPhone,
+                          iroda_email: 'lenard.csaba74@gmail.com',
+                          iroda_nev: 'Demo Iroda'
+                        })
+                      }).catch(() => {});
                       setLeadCaptured(true);
                       setShowLeadForm(false);
                       setMessages(prev => [...prev, {
