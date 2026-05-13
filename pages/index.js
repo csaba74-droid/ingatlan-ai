@@ -375,19 +375,19 @@ function PropCard({ prop, match, isTop }) {
       marginTop: 6,
       position: 'relative'
     }}>
-      {isTop && (
-        <div style={{
-          position: 'absolute', top: 10, right: 12,
-          fontSize: 10, fontWeight: 500,
-          background: '#f5ead8', color: '#7a4e10',
-          padding: '2px 8px', borderRadius: 20,
-          border: '0.5px solid rgba(201,150,58,0.3)'
-        }}>Legjobb találat</div>
-      )}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8, marginBottom: 5 }}>
         <div style={{ fontSize: 13, fontWeight: 500, color: '#1C2B3A' }}>{prop.cim}</div>
         <div style={{ fontSize: 13, fontWeight: 500, color: '#C9963A', whiteSpace: 'nowrap' }}>{prop.ar}</div>
       </div>
+      {isTop && (
+        <div style={{
+          display: 'inline-block', marginBottom: 4,
+          fontSize: 10, fontWeight: 500,
+          background: '#f5ead8', color: '#7a4e10',
+          padding: '2px 8px', borderRadius: 20,
+          border: '0.5px solid rgba(201,150,58,0.3)'
+        }}>⭐ Legjobb találat</div>
+      )}
       <div style={{ fontSize: 11.5, color: '#5a6b7a', marginBottom: 6 }}>
         {prop.kerulet} · {prop.alapterulet} m² · {prop.szobak} szoba · {prop.emelet}. em. · {prop.tajolas}
       </div>
