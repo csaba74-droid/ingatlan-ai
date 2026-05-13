@@ -359,6 +359,8 @@ const PROPERTIES = [
   },
 ];
 
+const IRODA_ID = 'demo';
+
 function escHtml(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
@@ -482,12 +484,7 @@ FONTOS SZABÁLYOK:
 - Ha nincs pontos egyezés, ajánlj hasonlót és magyarázd el miért.
 
 NYELV - KÖTELEZŐ SZABÁLY:
-- Ha magyarul ír → magyarul válaszolj
-- Ha angolul ír → angolul válaszolj  
-- Ha németül ír → németül válaszolj
-- Ha bármilyen más nyelven ír → azon a nyelven írd meg az alábbi üzenetet, pontosan így fordítva az adott nyelvre: "Sajnos csak magyarul, angolul és németül tudok segíteni. Kérem írjon az egyik említett nyelven!"
-  Például spanyolul: "Lo siento, solo puedo ayudarle en húngaro, inglés o alemán. ¡Por favor, escriba en uno de estos idiomas!"
-  Például franciául: "Désolé, je ne peux vous aider qu'en hongrois, anglais ou allemand. Veuillez écrire dans l'une de ces langues!"
+Mindig azon a nyelven válaszolj amin a felhasználó ír. Ha magyarul kérdez → magyarul. Ha angolul → angolul. Ha franciául → franciául. Ha arabul → arabul. Bármilyen nyelven → azon a nyelven. SOHA ne kérd hogy más nyelven írjon.
 A JSON mezők nevei mindig magyarul maradjanak.
 
 MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
@@ -519,6 +516,7 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          iroda_id: IRODA_ID,
           model: 'claude-sonnet-4-6',
           max_tokens: 2000,
           system: systemPrompt,
@@ -747,8 +745,21 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
                 </div>
                 <div style={{ display: 'flex', gap: 8 }}>
                   <button
-                    onClick={() => {
+                    onClick={async () => {
                       if (!leadName.trim() || !leadPhone.trim()) return;
+                      // Save lead to Supabase via API
+                      await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          iroda_id: IRODA_ID,
+                          lead: { nev: leadName, telefon: leadPhone },
+                          model: 'claude-sonnet-4-6',
+                          max_tokens: 10,
+                          system: 'Csak annyit mondj: ok',
+                          messages: [{ role: 'user', content: 'lead mentve' }]
+                        })
+                      }).catch(() => {});
                       setLeadCaptured(true);
                       setShowLeadForm(false);
                       setMessages(prev => [...prev, {
