@@ -3,6 +3,9 @@
   "functions": {
     "pages/api/chat.js": {
       "maxDuration": 30
+    },
+    "pages/api/iroda-login.js": {
+      "maxDuration": 10
     }
   }
 }
