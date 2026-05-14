@@ -418,7 +418,7 @@ function escHtml(s) {
 function PropCard({ prop, match, isTop }) {
   const [kepIndex, setKepIndex] = useState(0);
   const kepek = prop.kepek_json ? (() => { try { return JSON.parse(prop.kepek_json); } catch(e) { return prop.kep_url ? [prop.kep_url] : []; } })() : (prop.kep_url ? [prop.kep_url] : []);
-  
+
   return (
     <div style={{
       background: '#fff',
@@ -429,37 +429,46 @@ function PropCard({ prop, match, isTop }) {
       position: 'relative'
     }}>
       {kepek.length > 0 && (
-        <div style={{ position: 'relative' }}>
-          <img
-            src={kepek[kepIndex]}
-            alt={prop.cim}
-            style={{ width: '100%', height: 160, objectFit: 'cover', display: 'block' }}
-            onError={e => e.target.style.display = 'none'}
-          />
+        <div style={{ position: 'relative', height: 160, background: '#f0f3f7', overflow: 'hidden' }}>
+          {kepek.map((kep, i) => (
+            <img
+              key={i}
+              src={kep}
+              alt={prop.cim}
+              style={{
+                position: 'absolute', top: 0, left: 0,
+                width: '100%', height: '100%', objectFit: 'cover',
+                opacity: i === kepIndex ? 1 : 0,
+                transition: 'opacity 0.3s ease',
+                display: 'block'
+              }}
+              onError={e => e.target.style.display = 'none'}
+            />
+          ))}
           {kepek.length > 1 && (
             <>
               <button onClick={() => setKepIndex(i => (i - 1 + kepek.length) % kepek.length)} style={{
                 position: 'absolute', left: 6, top: '50%', transform: 'translateY(-50%)',
                 background: 'rgba(0,0,0,0.45)', border: 'none', color: '#fff',
                 width: 26, height: 26, borderRadius: '50%', cursor: 'pointer', fontSize: 13,
-                display: 'flex', alignItems: 'center', justifyContent: 'center'
+                display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2
               }}>‹</button>
               <button onClick={() => setKepIndex(i => (i + 1) % kepek.length)} style={{
                 position: 'absolute', right: 6, top: '50%', transform: 'translateY(-50%)',
                 background: 'rgba(0,0,0,0.45)', border: 'none', color: '#fff',
                 width: 26, height: 26, borderRadius: '50%', cursor: 'pointer', fontSize: 13,
-                display: 'flex', alignItems: 'center', justifyContent: 'center'
+                display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2
               }}>›</button>
               <div style={{
                 position: 'absolute', bottom: 6, right: 8,
                 background: 'rgba(0,0,0,0.45)', color: '#fff',
-                fontSize: 10, padding: '2px 7px', borderRadius: 10
+                fontSize: 10, padding: '2px 7px', borderRadius: 10, zIndex: 2
               }}>{kepIndex + 1} / {kepek.length}</div>
             </>
           )}
           {isTop && (
             <div style={{
-              position: 'absolute', top: 8, left: 8,
+              position: 'absolute', top: 8, left: 8, zIndex: 2,
               fontSize: 10, fontWeight: 500,
               background: 'rgba(201,150,58,0.95)', color: '#fff',
               padding: '3px 9px', borderRadius: 20,
