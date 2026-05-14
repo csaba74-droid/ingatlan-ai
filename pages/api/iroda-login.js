@@ -23,3 +23,8 @@ export default async function handler(req, res) {
   
   return res.status(200).json({ iroda: data });
 }
+export const config = {
+  api: {
+    bodyParser: true,
+  },
+};
