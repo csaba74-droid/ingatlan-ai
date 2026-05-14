@@ -46,21 +46,23 @@ export default function IrodaAdmin() {
   }
 
   async function loadIngatlanok(id) {
-    const { data } = await supabase
-      .from('ingatlanok')
-      .select('*')
-      .eq('iroda_id', id)
-      .order('id');
-    setIngatlanok(data || []);
+    const res = await fetch('/api/get-iroda-data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ iroda_id: id, tabla: 'ingatlanok' })
+    });
+    const json = await res.json();
+    setIngatlanok(json.data || []);
   }
 
   async function loadLeadek(id) {
-    const { data } = await supabase
-      .from('leadek')
-      .select('*')
-      .eq('iroda_id', id)
-      .order('datum', { ascending: false });
-    setLeadek(data || []);
+    const res = await fetch('/api/get-iroda-data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ iroda_id: id, tabla: 'leadek' })
+    });
+    const json = await res.json();
+    setLeadek(json.data || []);
   }
 
   function parseCSV(text) {
