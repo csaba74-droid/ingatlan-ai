@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     if (!response.ok) throw new Error('XML feed nem elérhető!');
     const xmlText = await response.text();
 
-    // XML feldolgozás regex-szel (nincs szükség külső könyvtárra)
+    // XML feldolgozás regex-szel
     const ingatlanok = [];
     const ingatlanMatches = xmlText.matchAll(/<ingatlan>([\s\S]*?)<\/ingatlan>/g);
 
@@ -50,6 +50,7 @@ export default async function handler(req, res) {
         tags: get('tags') ? get('tags').split(';').map(t => t.trim()) : [],
         kep_url: kepek[0] || null,
         kepek_json: JSON.stringify(kepek),
+        adatlap_url: get('adatlap_url') || null,
         aktiv: true
       });
     }
