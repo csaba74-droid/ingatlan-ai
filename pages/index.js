@@ -420,6 +420,20 @@ export default function Home() {
   const [leadName, setLeadName] = useState('');
   const [leadPhone, setLeadPhone] = useState('');
   const [lastProperty, setLastProperty] = useState(null);
+  const [dbProperties, setDbProperties] = useState(null);
+
+  useEffect(() => {
+    if (IRODA_ID !== 'demo') {
+      fetch('/api/get-iroda-data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ iroda_id: IRODA_ID, tabla: 'ingatlanok' })
+      })
+      .then(r => r.json())
+      .then(json => { if (json.data?.length > 0) setDbProperties(json.data); })
+      .catch(() => {});
+    }
+  }, []);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -427,7 +441,8 @@ export default function Home() {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const dbJson = JSON.stringify(PROPERTIES.map(p => ({
+  const activeProperties = dbProperties || PROPERTIES;
+  const dbJson = JSON.stringify(activeProperties.map(p => ({
     id: p.id, cim: p.cim, kerulet: p.kerulet, ar: p.ar,
     alapterulet: p.alapterulet + ' m²', szobak: p.szobak,
     emelet: p.emelet, tajolas: p.tajolas, allapot: p.allapot,
@@ -556,7 +571,7 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
       setMessages(prev => [...prev, { role: 'ai', result }]);
       // Track last viewed property
       if (result.talalatok && result.talalatok.length > 0) {
-        const prop = PROPERTIES.find(p => p.id === result.talalatok[0].id);
+        const prop = activeProperties.find(p => p.id === result.talalatok[0].id);
         if (prop) setLastProperty(prop);
       }
       
@@ -670,7 +685,7 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
                       <div style={{ background: '#f7f8fa', border: '0.5px solid rgba(28,43,58,0.10)', borderRadius: '4px 18px 18px 18px', padding: '12px 15px', fontSize: 14, lineHeight: 1.6, color: '#1C2B3A' }}>
                         {msg.result.bevezeto && <p style={{ marginBottom: 8 }}>{msg.result.bevezeto}</p>}
                         {(msg.result.talalatok || []).map((t, ti) => {
-                          const prop = PROPERTIES.find(p => p.id === t.id);
+                          const prop = activeProperties.find(p => p.id === t.id);
                           if (!prop) return null;
                           return <PropCard key={ti} prop={prop} match={t} isTop={ti === 0} />;
                         })}
