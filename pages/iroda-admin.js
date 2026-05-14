@@ -14,6 +14,9 @@ export default function IrodaAdmin() {
   const [ingatlanok, setIngatlanok] = useState([]);
   const [leadek, setLeadek] = useState([]);
   const [activeTab, setActiveTab] = useState('ingatlanok');
+  const [feedUrl, setFeedUrl] = useState('');
+  const [syncing, setSyncing] = useState(false);
+  const [syncResult, setSyncResult] = useState(null);
   const [ujJelszo, setUjJelszo] = useState('');
   const [ujJelszo2, setUjJelszo2] = useState('');
   const [jelszoResult, setJelszoResult] = useState(null);
@@ -232,7 +235,7 @@ export default function IrodaAdmin() {
             {[
               { id: 'ingatlanok', label: `Ingatlanok (${ingatlanok.length})` },
               { id: 'leadek', label: `Leadek (${leadek.length})` },
-              { id: 'feltoltes', label: 'CSV Feltöltés' },
+              { id: 'feltoltes', label: 'XML Szinkron' },
               { id: 'beallitasok', label: 'Beállítások' },
             ].map(tab => (
               <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{
@@ -317,60 +320,53 @@ export default function IrodaAdmin() {
             </div>
           )}
 
-          {/* CSV FELTÖLTÉS TAB */}
+          {/* XML SZINKRON TAB */}
           {activeTab === 'feltoltes' && (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-              <div style={{ background: '#fff', borderRadius: 12, padding: 24, border: '0.5px solid rgba(28,43,58,0.1)', boxShadow: '0 2px 10px rgba(28,43,58,0.06)' }}>
-                <div style={{ fontFamily: 'Georgia, serif', fontSize: 16, color: '#1C2B3A', marginBottom: 16 }}>CSV Feltöltés</div>
-
-                <div
-                  onClick={() => document.getElementById('csvInput').click()}
-                  style={{ border: '1.5px dashed rgba(28,43,58,0.2)', borderRadius: 10, padding: 24, textAlign: 'center', cursor: 'pointer', background: file ? '#e8f5e9' : '#f7f8fa', marginBottom: 14 }}
-                >
-                  <div style={{ fontSize: 28, marginBottom: 8 }}>{file ? '✅' : '📄'}</div>
-                  <div style={{ fontSize: 13, color: file ? '#2e7d32' : '#5a6b7a' }}>
-                    {file ? file.name : 'Kattints a CSV fájl kiválasztásához'}
-                  </div>
-                  <div style={{ fontSize: 11, color: '#96a7b5', marginTop: 4 }}>vagy húzd ide a fájlt</div>
+            <div style={{ maxWidth: 600 }}>
+              <div style={{ background: '#fff', borderRadius: 12, padding: 24, border: '0.5px solid rgba(28,43,58,0.1)', boxShadow: '0 2px 10px rgba(28,43,58,0.06)', marginBottom: 16 }}>
+                <div style={{ fontFamily: 'Georgia, serif', fontSize: 16, color: '#1C2B3A', marginBottom: 8 }}>XML Feed Szinkronizálás</div>
+                <p style={{ fontSize: 13, color: '#5a6b7a', marginBottom: 16, lineHeight: 1.6 }}>
+                  Adja meg az ingatlanos szoftver XML feed URL-jét. A rendszer letölti és feldolgozza az összes ingatlant — képekkel együtt.
+                </p>
+                <div style={{ marginBottom: 14 }}>
+                  <label style={{ fontSize: 12, fontWeight: 500, color: '#5a6b7a', textTransform: 'uppercase', letterSpacing: '0.07em', display: 'block', marginBottom: 6 }}>XML Feed URL</label>
+                  <input
+                    value={feedUrl}
+                    onChange={e => setFeedUrl(e.target.value)}
+                    placeholder="https://iroda.hu/feed/ingatlanok.xml"
+                    style={{ width: '100%', padding: '10px 12px', border: '0.5px solid rgba(28,43,58,0.2)', borderRadius: 8, fontSize: 13, fontFamily: 'inherit', outline: 'none' }}
+                  />
                 </div>
-                <input id="csvInput" type="file" accept=".csv" style={{ display: 'none' }} onChange={e => setFile(e.target.files[0])} />
-
-                <button onClick={upload} disabled={uploading} style={{ width: '100%', padding: 12, background: uploading ? '#96a7b5' : '#1C2B3A', color: '#C9963A', border: 'none', borderRadius: 10, fontSize: 14, fontWeight: 500, cursor: uploading ? 'not-allowed' : 'pointer', fontFamily: 'inherit' }}>
-                  {uploading ? 'Feltöltés folyamatban...' : 'Feltöltés és frissítés'}
+                <button
+                  onClick={async () => {
+                    if (!feedUrl.trim()) { setSyncResult({ error: 'Kérlek add meg a feed URL-jét!' }); return; }
+                    setSyncing(true);
+                    setSyncResult(null);
+                    const res = await fetch('/api/sync-xml-feed', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ iroda_id: irodaId, feed_url: feedUrl.trim() })
+                    });
+                    const json = await res.json();
+                    setSyncResult(res.ok ? { success: true, count: json.count } : { error: json.error });
+                    if (res.ok) loadIngatlanok(irodaId);
+                    setSyncing(false);
+                  }}
+                  disabled={syncing}
+                  style={{ width: '100%', padding: 12, background: syncing ? '#96a7b5' : '#1C2B3A', color: '#C9963A', border: 'none', borderRadius: 10, fontSize: 14, fontWeight: 500, cursor: syncing ? 'not-allowed' : 'pointer', fontFamily: 'inherit' }}
+                >
+                  {syncing ? '⏳ Szinkronizálás folyamatban...' : '🔄 Szinkronizálás indítása'}
                 </button>
-
-                {result && (
-                  <div style={{ marginTop: 12, padding: 12, borderRadius: 8, background: result.error ? '#fff3f3' : '#e8f5e9', border: `0.5px solid ${result.error ? '#ffcccc' : '#a5d6a7'}`, fontSize: 13, color: result.error ? '#c62828' : '#2e7d32' }}>
-                    {result.error ? `❌ ${result.error}` : `✅ Sikeresen feltöltve ${result.count} ingatlan!`}
+                {syncResult && (
+                  <div style={{ marginTop: 12, padding: 12, borderRadius: 8, background: syncResult.error ? '#fff3f3' : '#e8f5e9', border: `0.5px solid ${syncResult.error ? '#ffcccc' : '#a5d6a7'}`, fontSize: 13, color: syncResult.error ? '#c62828' : '#2e7d32' }}>
+                    {syncResult.error ? `❌ ${syncResult.error}` : `✅ Sikeresen szinkronizálva ${syncResult.count} ingatlan!`}
                   </div>
                 )}
               </div>
-
-              <div style={{ background: '#fff', borderRadius: 12, padding: 24, border: '0.5px solid rgba(28,43,58,0.1)', boxShadow: '0 2px 10px rgba(28,43,58,0.06)' }}>
-                <div style={{ fontFamily: 'Georgia, serif', fontSize: 16, color: '#1C2B3A', marginBottom: 12 }}>CSV Sablon</div>
-                <p style={{ fontSize: 13, color: '#5a6b7a', marginBottom: 12, lineHeight: 1.6 }}>A CSV fájl első sora a fejléc kell legyen az alábbi oszlopnevekkel:</p>
-                <div style={{ background: '#1C2B3A', borderRadius: 8, padding: 14, fontFamily: 'monospace', fontSize: 12, color: '#C9963A', lineHeight: 1.8 }}>
-                  cim,kerulet,ar,tipus,alapterulet,szobak,leiras,tags
-                </div>
-                <div style={{ marginTop: 12, fontSize: 12, color: '#5a6b7a', lineHeight: 1.7 }}>
-                  <strong style={{ color: '#1C2B3A' }}>Példa sor:</strong><br />
-                  Petőfi utca 12.,Budapest XIII.,45000000 Ft,lakás,68,3,Szép lakás a belvárosban...,kert;csendes;napfényes
-                </div>
-                <div style={{ marginTop: 12, background: '#FFF8E1', borderRadius: 8, padding: 12, fontSize: 12, color: '#7a5200', lineHeight: 1.6 }}>
-                  ⚠️ A <strong>tags</strong> mezőben pontosvesszővel válassza el a jellemzőket: <code>kert;garázs;csendes</code>
-                </div>
-                <button
-                  onClick={() => {
-                    const csv = 'cim,kerulet,ar,tipus,alapterulet,szobak,leiras,tags\nPélda utca 1.,Budapest XIII.,45000000 Ft,lakás,68,3,Szép lakás leírása itt.,kert;csendes';
-                    const blob = new Blob([csv], { type: 'text/csv' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url; a.download = 'ingatlan_sablon.csv'; a.click();
-                  }}
-                  style={{ marginTop: 14, width: '100%', padding: 10, background: '#f0f3f7', border: '0.5px solid rgba(28,43,58,0.15)', borderRadius: 8, fontSize: 13, color: '#1C2B3A', cursor: 'pointer', fontFamily: 'inherit' }}
-                >
-                  📥 Sablon letöltése
-                </button>
+              <div style={{ background: '#E3F2FD', borderRadius: 12, padding: 16, border: '0.5px solid #90CAF9', fontSize: 13, color: '#1565C0', lineHeight: 1.7 }}>
+                <strong>💡 Teszt feed URL:</strong><br />
+                https://ingatlan-ai-nine.vercel.app/teszt-feed.xml<br /><br />
+                Ezzel tesztelheti a szinkronizálást mielőtt az éles feed URL-t adja meg.
               </div>
             </div>
           )}
