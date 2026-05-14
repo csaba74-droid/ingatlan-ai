@@ -5,6 +5,7 @@ const PROPERTIES = [
   // ── BUDAPEST LAKÁSOK ──────────────────────────────────────
   {
     id: 1,
+    kepek_json: '["https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800","https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800","https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
     cim: "Pozsonyi út 14., V. emelet",
     kerulet: "XIII. kerület, Újlipótváros",
@@ -20,6 +21,7 @@ const PROPERTIES = [
   },
   {
     id: 2,
+    kepek_json: '["https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800","https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
     cim: "Ráday utca 8., II. emelet",
     kerulet: "IX. kerület, Ferencváros",
@@ -35,6 +37,7 @@ const PROPERTIES = [
   },
   {
     id: 3,
+    kepek_json: '["https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800","https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800","https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
     cim: "Thököly út 67., fsz.",
     kerulet: "XIV. kerület, Zugló",
@@ -50,6 +53,7 @@ const PROPERTIES = [
   },
   {
     id: 4,
+    kepek_json: '["https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800","https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800",
     cim: "Hajós utca 22., IV. emelet",
     kerulet: "VI. kerület, Terézváros",
@@ -65,6 +69,7 @@ const PROPERTIES = [
   },
   {
     id: 5,
+    kepek_json: '["https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800","https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800","https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
     cim: "Gyár utca 17., III. emelet",
     kerulet: "VIII. kerület, Józsefváros",
@@ -80,6 +85,7 @@ const PROPERTIES = [
   },
   {
     id: 6,
+    kepek_json: '["https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=800","https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800","https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=800",
     cim: "Bartók Béla út 43., I. emelet",
     kerulet: "XI. kerület, Újbuda",
@@ -95,6 +101,7 @@ const PROPERTIES = [
   },
   {
     id: 7,
+    kepek_json: '["https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800","https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
     cim: "Váci út 112., VIII. emelet",
     kerulet: "XIII. kerület, Angyalföld",
@@ -110,6 +117,7 @@ const PROPERTIES = [
   },
   {
     id: 8,
+    kepek_json: '["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800","https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800","https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
     cim: "Kossuth Lajos utca 5., III. emelet",
     kerulet: "V. kerület, Belváros",
@@ -126,6 +134,7 @@ const PROPERTIES = [
   // ── BUDAPEST KERTES HÁZAK ────────────────────────────────
   {
     id: 9,
+    kepek_json: '["https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800","https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800",
     cim: "Virág utca 12.",
     kerulet: "XVI. kerület, Mátyásföld",
@@ -141,6 +150,7 @@ const PROPERTIES = [
   },
   {
     id: 10,
+    kepek_json: '["https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?w=800","https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800","https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?w=800",
     cim: "Rózsa utca 34.",
     kerulet: "XVII. kerület, Rákosmente",
@@ -156,6 +166,7 @@ const PROPERTIES = [
   },
   {
     id: 11,
+    kepek_json: '["https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800","https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?w=800","https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
     cim: "Határ út 78.",
     kerulet: "XX. kerület, Pesterzsébet",
@@ -172,6 +183,7 @@ const PROPERTIES = [
   // ── BUDAPEST IKERHÁZAK ───────────────────────────────────
   {
     id: 12,
+    kepek_json: '["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
     cim: "Liliom köz 6/A",
     kerulet: "XV. kerület, Rákospalota",
@@ -187,6 +199,7 @@ const PROPERTIES = [
   },
   {
     id: 13,
+    kepek_json: '["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800","https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800","https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
     cim: "Diófa utca 23/B",
     kerulet: "XVIII. kerület, Pestszentlőrinc",
@@ -202,6 +215,7 @@ const PROPERTIES = [
   },
   {
     id: 14,
+    kepek_json: '["https://images.unsplash.com/photo-1598228723793-52759bba239c?w=800","https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800","https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1598228723793-52759bba239c?w=800",
     cim: "Körte utca 11/A",
     kerulet: "XIX. kerület, Kispest",
@@ -218,6 +232,7 @@ const PROPERTIES = [
   // ── PEST MEGYE KERTES HÁZAK ─────────────────────────────
   {
     id: 15,
+    kepek_json: '["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800","https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800","https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800",
     cim: "Petőfi utca 45.",
     kerulet: "Érd, Érd-Parkváros",
@@ -233,6 +248,7 @@ const PROPERTIES = [
   },
   {
     id: 16,
+    kepek_json: '["https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800","https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800",
     cim: "Ady Endre utca 12.",
     kerulet: "Budaörs, Frankhegy",
@@ -248,6 +264,7 @@ const PROPERTIES = [
   },
   {
     id: 17,
+    kepek_json: '["https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800","https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800",
     cim: "Fő utca 67.",
     kerulet: "Szigetszentmiklós, Lakihegy",
@@ -263,6 +280,7 @@ const PROPERTIES = [
   },
   {
     id: 18,
+    kepek_json: '["https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800","https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800","https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800",
     cim: "Kossuth utca 23.",
     kerulet: "Dunakeszi, Alag",
@@ -278,6 +296,7 @@ const PROPERTIES = [
   },
   {
     id: 19,
+    kepek_json: '["https://images.unsplash.com/photo-1598902108854-10e335adac99?w=800","https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?w=800","https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1598902108854-10e335adac99?w=800",
     cim: "Rákóczi utca 88.",
     kerulet: "Vecsés, Belváros",
@@ -293,6 +312,7 @@ const PROPERTIES = [
   },
   {
     id: 20,
+    kepek_json: '["https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?w=800","https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?w=800",
     cim: "Bartók Béla utca 5.",
     kerulet: "Göd, Strand",
@@ -309,6 +329,7 @@ const PROPERTIES = [
   // ── PEST MEGYE IKERHÁZAK ────────────────────────────────
   {
     id: 21,
+    kepek_json: '["https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800","https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800",
     cim: "Tulipán utca 14/A",
     kerulet: "Gyál, Újtelep",
@@ -324,6 +345,7 @@ const PROPERTIES = [
   },
   {
     id: 22,
+    kepek_json: '["https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800","https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800","https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800",
     cim: "Akác utca 8/B",
     kerulet: "Törökbálint, Torbágy",
@@ -339,6 +361,7 @@ const PROPERTIES = [
   },
   {
     id: 23,
+    kepek_json: '["https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800","https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800","https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800",
     cim: "Móricz Zsigmond utca 31/A",
     kerulet: "Fót, Centrum",
@@ -354,6 +377,7 @@ const PROPERTIES = [
   },
   {
     id: 24,
+    kepek_json: '["https://images.unsplash.com/photo-1599427303058-f04cbcf4756f?w=800","https://images.unsplash.com/photo-1598228723793-52759bba239c?w=800","https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1599427303058-f04cbcf4756f?w=800",
     cim: "Hunyadi utca 5/B",
     kerulet: "Üllő, Belváros",
@@ -369,6 +393,7 @@ const PROPERTIES = [
   },
   {
     id: 25,
+    kepek_json: '["https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?w=800","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800","https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800"]',
     kep_url: "https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?w=800",
     cim: "Szabadság tér 2/A",
     kerulet: "Gödöllő, Belváros",
@@ -391,6 +416,9 @@ function escHtml(s) {
 }
 
 function PropCard({ prop, match, isTop }) {
+  const [kepIndex, setKepIndex] = React.useState(0);
+  const kepek = prop.kepek_json ? (() => { try { return JSON.parse(prop.kepek_json); } catch(e) { return prop.kep_url ? [prop.kep_url] : []; } })() : (prop.kep_url ? [prop.kep_url] : []);
+  
   return (
     <div style={{
       background: '#fff',
@@ -400,14 +428,35 @@ function PropCard({ prop, match, isTop }) {
       marginTop: 6,
       position: 'relative'
     }}>
-      {prop.kep_url && (
+      {kepek.length > 0 && (
         <div style={{ position: 'relative' }}>
           <img
-            src={prop.kep_url}
+            src={kepek[kepIndex]}
             alt={prop.cim}
             style={{ width: '100%', height: 160, objectFit: 'cover', display: 'block' }}
             onError={e => e.target.style.display = 'none'}
           />
+          {kepek.length > 1 && (
+            <>
+              <button onClick={() => setKepIndex(i => (i - 1 + kepek.length) % kepek.length)} style={{
+                position: 'absolute', left: 6, top: '50%', transform: 'translateY(-50%)',
+                background: 'rgba(0,0,0,0.45)', border: 'none', color: '#fff',
+                width: 26, height: 26, borderRadius: '50%', cursor: 'pointer', fontSize: 13,
+                display: 'flex', alignItems: 'center', justifyContent: 'center'
+              }}>‹</button>
+              <button onClick={() => setKepIndex(i => (i + 1) % kepek.length)} style={{
+                position: 'absolute', right: 6, top: '50%', transform: 'translateY(-50%)',
+                background: 'rgba(0,0,0,0.45)', border: 'none', color: '#fff',
+                width: 26, height: 26, borderRadius: '50%', cursor: 'pointer', fontSize: 13,
+                display: 'flex', alignItems: 'center', justifyContent: 'center'
+              }}>›</button>
+              <div style={{
+                position: 'absolute', bottom: 6, right: 8,
+                background: 'rgba(0,0,0,0.45)', color: '#fff',
+                fontSize: 10, padding: '2px 7px', borderRadius: 10
+              }}>{kepIndex + 1} / {kepek.length}</div>
+            </>
+          )}
           {isTop && (
             <div style={{
               position: 'absolute', top: 8, left: 8,
