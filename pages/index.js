@@ -5,6 +5,7 @@ const PROPERTIES = [
   // ── BUDAPEST LAKÁSOK ──────────────────────────────────────
   {
     id: 1,
+    kep_url: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
     cim: "Pozsonyi út 14., V. emelet",
     kerulet: "XIII. kerület, Újlipótváros",
     ar: "96 500 000 Ft",
@@ -19,6 +20,7 @@ const PROPERTIES = [
   },
   {
     id: 2,
+    kep_url: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
     cim: "Ráday utca 8., II. emelet",
     kerulet: "IX. kerület, Ferencváros",
     ar: "78 900 000 Ft",
@@ -33,6 +35,7 @@ const PROPERTIES = [
   },
   {
     id: 3,
+    kep_url: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
     cim: "Thököly út 67., fsz.",
     kerulet: "XIV. kerület, Zugló",
     ar: "54 200 000 Ft",
@@ -47,6 +50,7 @@ const PROPERTIES = [
   },
   {
     id: 4,
+    kep_url: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800",
     cim: "Hajós utca 22., IV. emelet",
     kerulet: "VI. kerület, Terézváros",
     ar: "119 000 000 Ft",
@@ -61,6 +65,7 @@ const PROPERTIES = [
   },
   {
     id: 5,
+    kep_url: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
     cim: "Gyár utca 17., III. emelet",
     kerulet: "VIII. kerület, Józsefváros",
     ar: "39 800 000 Ft",
@@ -75,6 +80,7 @@ const PROPERTIES = [
   },
   {
     id: 6,
+    kep_url: "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=800",
     cim: "Bartók Béla út 43., I. emelet",
     kerulet: "XI. kerület, Újbuda",
     ar: "87 500 000 Ft",
@@ -89,6 +95,7 @@ const PROPERTIES = [
   },
   {
     id: 7,
+    kep_url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
     cim: "Váci út 112., VIII. emelet",
     kerulet: "XIII. kerület, Angyalföld",
     ar: "68 000 000 Ft",
@@ -103,6 +110,7 @@ const PROPERTIES = [
   },
   {
     id: 8,
+    kep_url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
     cim: "Kossuth Lajos utca 5., III. emelet",
     kerulet: "V. kerület, Belváros",
     ar: "145 000 000 Ft",
@@ -118,6 +126,7 @@ const PROPERTIES = [
   // ── BUDAPEST KERTES HÁZAK ────────────────────────────────
   {
     id: 9,
+    kep_url: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800",
     cim: "Virág utca 12.",
     kerulet: "XVI. kerület, Mátyásföld",
     ar: "89 900 000 Ft",
@@ -132,6 +141,7 @@ const PROPERTIES = [
   },
   {
     id: 10,
+    kep_url: "https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?w=800",
     cim: "Rózsa utca 34.",
     kerulet: "XVII. kerület, Rákosmente",
     ar: "62 500 000 Ft",
@@ -146,6 +156,7 @@ const PROPERTIES = [
   },
   {
     id: 11,
+    kep_url: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
     cim: "Határ út 78.",
     kerulet: "XX. kerület, Pesterzsébet",
     ar: "47 900 000 Ft",
@@ -161,6 +172,7 @@ const PROPERTIES = [
   // ── BUDAPEST IKERHÁZAK ───────────────────────────────────
   {
     id: 12,
+    kep_url: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
     cim: "Liliom köz 6/A",
     kerulet: "XV. kerület, Rákospalota",
     ar: "79 000 000 Ft",
@@ -175,6 +187,7 @@ const PROPERTIES = [
   },
   {
     id: 13,
+    kep_url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
     cim: "Diófa utca 23/B",
     kerulet: "XVIII. kerület, Pestszentlőrinc",
     ar: "68 500 000 Ft",
@@ -189,6 +202,7 @@ const PROPERTIES = [
   },
   {
     id: 14,
+    kep_url: "https://images.unsplash.com/photo-1598228723793-52759bba239c?w=800",
     cim: "Körte utca 11/A",
     kerulet: "XIX. kerület, Kispest",
     ar: "52 000 000 Ft",
@@ -204,6 +218,7 @@ const PROPERTIES = [
   // ── PEST MEGYE KERTES HÁZAK ─────────────────────────────
   {
     id: 15,
+    kep_url: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800",
     cim: "Petőfi utca 45.",
     kerulet: "Érd, Érd-Parkváros",
     ar: "74 900 000 Ft",
@@ -218,6 +233,7 @@ const PROPERTIES = [
   },
   {
     id: 16,
+    kep_url: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800",
     cim: "Ady Endre utca 12.",
     kerulet: "Budaörs, Frankhegy",
     ar: "138 000 000 Ft",
@@ -232,6 +248,7 @@ const PROPERTIES = [
   },
   {
     id: 17,
+    kep_url: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800",
     cim: "Fő utca 67.",
     kerulet: "Szigetszentmiklós, Lakihegy",
     ar: "58 500 000 Ft",
@@ -246,6 +263,7 @@ const PROPERTIES = [
   },
   {
     id: 18,
+    kep_url: "https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800",
     cim: "Kossuth utca 23.",
     kerulet: "Dunakeszi, Alag",
     ar: "82 000 000 Ft",
@@ -260,6 +278,7 @@ const PROPERTIES = [
   },
   {
     id: 19,
+    kep_url: "https://images.unsplash.com/photo-1598902108854-10e335adac99?w=800",
     cim: "Rákóczi utca 88.",
     kerulet: "Vecsés, Belváros",
     ar: "43 500 000 Ft",
@@ -274,6 +293,7 @@ const PROPERTIES = [
   },
   {
     id: 20,
+    kep_url: "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?w=800",
     cim: "Bartók Béla utca 5.",
     kerulet: "Göd, Strand",
     ar: "67 000 000 Ft",
@@ -289,6 +309,7 @@ const PROPERTIES = [
   // ── PEST MEGYE IKERHÁZAK ────────────────────────────────
   {
     id: 21,
+    kep_url: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800",
     cim: "Tulipán utca 14/A",
     kerulet: "Gyál, Újtelep",
     ar: "49 900 000 Ft",
@@ -303,6 +324,7 @@ const PROPERTIES = [
   },
   {
     id: 22,
+    kep_url: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800",
     cim: "Akác utca 8/B",
     kerulet: "Törökbálint, Torbágy",
     ar: "93 500 000 Ft",
@@ -317,6 +339,7 @@ const PROPERTIES = [
   },
   {
     id: 23,
+    kep_url: "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800",
     cim: "Móricz Zsigmond utca 31/A",
     kerulet: "Fót, Centrum",
     ar: "61 000 000 Ft",
@@ -331,6 +354,7 @@ const PROPERTIES = [
   },
   {
     id: 24,
+    kep_url: "https://images.unsplash.com/photo-1599427303058-f04cbcf4756f?w=800",
     cim: "Hunyadi utca 5/B",
     kerulet: "Üllő, Belváros",
     ar: "44 000 000 Ft",
@@ -345,6 +369,7 @@ const PROPERTIES = [
   },
   {
     id: 25,
+    kep_url: "https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?w=800",
     cim: "Szabadság tér 2/A",
     kerulet: "Gödöllő, Belváros",
     ar: "72 500 000 Ft",
