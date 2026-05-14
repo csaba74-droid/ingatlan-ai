@@ -14,6 +14,9 @@ export default function IrodaAdmin() {
   const [ingatlanok, setIngatlanok] = useState([]);
   const [leadek, setLeadek] = useState([]);
   const [activeTab, setActiveTab] = useState('ingatlanok');
+  const [ujJelszo, setUjJelszo] = useState('');
+  const [ujJelszo2, setUjJelszo2] = useState('');
+  const [jelszoResult, setJelszoResult] = useState(null);
 
   async function login() {
     setLoginError('');
@@ -221,6 +224,7 @@ export default function IrodaAdmin() {
               { id: 'ingatlanok', label: `Ingatlanok (${ingatlanok.length})` },
               { id: 'leadek', label: `Leadek (${leadek.length})` },
               { id: 'feltoltes', label: 'CSV Feltöltés' },
+              { id: 'beallitasok', label: 'Beállítások' },
             ].map(tab => (
               <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{
                 padding: '8px 16px', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 13, fontFamily: 'inherit',
@@ -358,6 +362,39 @@ export default function IrodaAdmin() {
                 >
                   📥 Sablon letöltése
                 </button>
+              </div>
+            </div>
+          )}
+
+          {/* BEÁLLÍTÁSOK TAB */}
+          {activeTab === 'beallitasok' && (
+            <div style={{ maxWidth: 480 }}>
+              <div style={{ background: '#fff', borderRadius: 12, padding: 24, border: '0.5px solid rgba(28,43,58,0.1)', boxShadow: '0 2px 10px rgba(28,43,58,0.06)' }}>
+                <div style={{ fontFamily: 'Georgia, serif', fontSize: 16, color: '#1C2B3A', marginBottom: 16 }}>Jelszó megváltoztatása</div>
+                <div style={{ marginBottom: 12 }}>
+                  <label style={{ fontSize: 12, fontWeight: 500, color: '#5a6b7a', textTransform: 'uppercase', letterSpacing: '0.07em', display: 'block', marginBottom: 6 }}>Új jelszó</label>
+                  <input type="password" value={ujJelszo} onChange={e => setUjJelszo(e.target.value)} placeholder="Minimum 6 karakter" style={{ width: '100%', padding: '10px 12px', border: '0.5px solid rgba(28,43,58,0.2)', borderRadius: 8, fontSize: 13, fontFamily: 'inherit', outline: 'none' }} />
+                </div>
+                <div style={{ marginBottom: 16 }}>
+                  <label style={{ fontSize: 12, fontWeight: 500, color: '#5a6b7a', textTransform: 'uppercase', letterSpacing: '0.07em', display: 'block', marginBottom: 6 }}>Megerősítés</label>
+                  <input type="password" value={ujJelszo2} onChange={e => setUjJelszo2(e.target.value)} placeholder="Ismételd meg" style={{ width: '100%', padding: '10px 12px', border: '0.5px solid rgba(28,43,58,0.2)', borderRadius: 8, fontSize: 13, fontFamily: 'inherit', outline: 'none' }} />
+                </div>
+                <button onClick={async () => {
+                  setJelszoResult(null);
+                  if (ujJelszo.length < 6) { setJelszoResult({ error: 'Minimum 6 karakter!' }); return; }
+                  if (ujJelszo !== ujJelszo2) { setJelszoResult({ error: 'A két jelszó nem egyezik!' }); return; }
+                  const { error } = await supabase.from('irodak').update({ jelszo: ujJelszo }).eq('iroda_id', irodaId);
+                  if (error) { setJelszoResult({ error: 'Hiba történt!' }); return; }
+                  setJelszoResult({ success: true });
+                  setUjJelszo(''); setUjJelszo2('');
+                }} style={{ width: '100%', padding: 12, background: '#1C2B3A', color: '#C9963A', border: 'none', borderRadius: 10, fontSize: 14, fontWeight: 500, cursor: 'pointer', fontFamily: 'inherit' }}>
+                  Jelszó mentése
+                </button>
+                {jelszoResult && (
+                  <div style={{ marginTop: 12, padding: 12, borderRadius: 8, background: jelszoResult.error ? '#fff3f3' : '#e8f5e9', border: `0.5px solid ${jelszoResult.error ? '#ffcccc' : '#a5d6a7'}`, fontSize: 13, color: jelszoResult.error ? '#c62828' : '#2e7d32' }}>
+                    {jelszoResult.error ? `❌ ${jelszoResult.error}` : '✅ Jelszó sikeresen megváltoztatva!'}
+                  </div>
+                )}
               </div>
             </div>
           )}
