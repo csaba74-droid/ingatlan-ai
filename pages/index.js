@@ -497,6 +497,29 @@ function PropCard({ prop, match, isTop }) {
           {match.ai_megjegyzes}
         </div>
       )}
+      <div style={{ marginTop: 10 }}>
+        {prop.adatlap_url ? (
+          <a href={prop.adatlap_url} target="_blank" rel="noopener noreferrer" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 5,
+            fontSize: 12, fontWeight: 500, color: '#1C2B3A',
+            background: '#f0f3f7', border: '0.5px solid rgba(28,43,58,0.15)',
+            padding: '6px 14px', borderRadius: 20, textDecoration: 'none',
+            cursor: 'pointer'
+          }}>
+            Adatlap megtekintése →
+          </a>
+        ) : (
+          <button onClick={() => alert('Ez a funkció éles módban elérhető — az ingatlan adatlapjára navigál az iroda honlapján.')} style={{
+            display: 'inline-flex', alignItems: 'center', gap: 5,
+            fontSize: 12, fontWeight: 500, color: '#96a7b5',
+            background: '#f7f8fa', border: '0.5px solid rgba(28,43,58,0.1)',
+            padding: '6px 14px', borderRadius: 20, cursor: 'pointer',
+            fontFamily: 'inherit'
+          }}>
+            Adatlap megtekintése →
+          </button>
+        )}
+      </div>
       </div>
     </div>
   );
