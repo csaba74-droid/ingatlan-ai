@@ -87,7 +87,7 @@ export default function IrodaAdmin() {
       const rows = parseCSV(text);
       if (rows.length === 0) throw new Error('A CSV fájl üres vagy nem olvasható.');
 
-      await supabase.from('ingatlanok').delete().eq('iroda_id', irodaId);
+      // Delete handled by API route
 
       const ujIngatlanok = rows.map(row => ({
         iroda_id: irodaId,
@@ -102,8 +102,13 @@ export default function IrodaAdmin() {
         aktiv: true
       }));
 
-      const { error } = await supabase.from('ingatlanok').insert(ujIngatlanok);
-      if (error) throw new Error(error.message);
+      const res = await fetch('/api/upload-ingatlanok', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ iroda_id: irodaId, ingatlanok: ujIngatlanok })
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || 'Feltöltési hiba!');
 
       setResult({ success: true, count: ujIngatlanok.length });
       setFile(null);
