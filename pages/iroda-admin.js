@@ -25,22 +25,24 @@ export default function IrodaAdmin() {
       return;
     }
 
-    const { data, error } = await supabase
-      .from('irodak')
-      .select('*')
-      .eq('iroda_id', irodaId.trim())
-      .eq('jelszo', password.trim())
-      .single();
-
-    if (error || !data) {
-      setLoginError('Hibás azonosító vagy jelszó!');
-      return;
+    try {
+      const res = await fetch('/api/iroda-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ iroda_id: irodaId.trim(), jelszo: password.trim() })
+      });
+      const json = await res.json();
+      if (!res.ok) {
+        setLoginError(json.error || 'Hibás azonosító vagy jelszó!');
+        return;
+      }
+      setIroda(json.iroda);
+      setLoggedIn(true);
+      loadIngatlanok(irodaId.trim());
+      loadLeadek(irodaId.trim());
+    } catch(err) {
+      setLoginError('Kapcsolati hiba, próbálja újra!');
     }
-
-    setIroda(data);
-    setLoggedIn(true);
-    loadIngatlanok(irodaId.trim());
-    loadLeadek(irodaId.trim());
   }
 
   async function loadIngatlanok(id) {
