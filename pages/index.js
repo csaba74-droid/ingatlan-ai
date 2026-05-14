@@ -416,7 +416,7 @@ function escHtml(s) {
 }
 
 function PropCard({ prop, match, isTop }) {
-  const [kepIndex, setKepIndex] = React.useState(0);
+  const [kepIndex, setKepIndex] = useState(0);
   const kepek = prop.kepek_json ? (() => { try { return JSON.parse(prop.kepek_json); } catch(e) { return prop.kep_url ? [prop.kep_url] : []; } })() : (prop.kep_url ? [prop.kep_url] : []);
   
   return (
