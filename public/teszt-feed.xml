@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ingatlanok>
+  <ingatlan>
+    <id>1</id>
+    <cim>Andrássy út 42.</cim>
+    <kerulet>Budapest VI. kerület</kerulet>
+    <ar>125000000</ar>
+    <tipus>lakás</tipus>
+    <alapterulet>95</alapterulet>
+    <szobak>3</szobak>
+    <leiras>Elegáns háromszobás lakás az Andrássy úton. Magas belmagasság, eredeti stukkók, teljesen felújítva 2023-ban. Két fürdőszoba, nagy nappali. Az Opera gyalogosan 3 perc.</leiras>
+    <tags>belváros;felújított;stukkó;két fürdő;metróközel</tags>
+    <kepek>
+      <kep>https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800</kep>
+      <kep>https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800</kep>
+    </kepek>
+  </ingatlan>
+  <ingatlan>
+    <id>2</id>
+    <cim>Bem rakpart 18.</cim>
+    <kerulet>Budapest II. kerület</kerulet>
+    <ar>98000000</ar>
+    <tipus>lakás</tipus>
+    <alapterulet>78</alapterulet>
+    <szobak>3</szobak>
+    <leiras>Dunára néző háromszobás lakás a Bem rakparton. Panorámás erkély, teljesen felújított. Napfényes déli tájolás. Villamos és busz megálló előtt.</leiras>
+    <tags>Duna-közel;panoráma;erkély;felújított;napfényes</tags>
+    <kepek>
+      <kep>https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800</kep>
+      <kep>https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800</kep>
+    </kepek>
+  </ingatlan>
+  <ingatlan>
+    <id>3</id>
+    <cim>Rózsadomb utca 7.</cim>
+    <kerulet>Budapest II. kerület</kerulet>
+    <ar>185000000</ar>
+    <tipus>kertes ház</tipus>
+    <alapterulet>210</alapterulet>
+    <szobak>5</szobak>
+    <leiras>Prémium kertes ház a Rózsadombon. 800m² saját kert, medence, garázs kettő autónak. Öt szoba, három fürdőszoba. Panoráma a városra. Okosotthon rendszer.</leiras>
+    <tags>kert;medence;garázs;panoráma;prémium;okosotthon</tags>
+    <kepek>
+      <kep>https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800</kep>
+      <kep>https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800</kep>
+    </kepek>
+  </ingatlan>
+  <ingatlan>
+    <id>4</id>
+    <cim>Bartók Béla út 89.</cim>
+    <kerulet>Budapest XI. kerület</kerulet>
+    <ar>67000000</ar>
+    <tipus>lakás</tipus>
+    <alapterulet>58</alapterulet>
+    <szobak>2</szobak>
+    <leiras>Felújított kétszobás lakás az újbudai Bartók Béla úton. Erkély az utcára néz. Metró 5 perc séta. Iskolák és óvoda közelben. Kisgyermekes családoknak ideális.</leiras>
+    <tags>felújított;erkély;metróközel;családbarát;napfényes</tags>
+    <kepek>
+      <kep>https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800</kep>
+    </kepek>
+  </ingatlan>
+  <ingatlan>
+    <id>5</id>
+    <cim>Petőfi utca 34.</cim>
+    <kerulet>Szentendre</kerulet>
+    <ar>72000000</ar>
+    <tipus>kertes ház</tipus>
+    <alapterulet>130</alapterulet>
+    <szobak>4</szobak>
+    <leiras>Gyönyörű kertes ház Szentendrén a Duna közelében. 400m² kert, garázs, terasz. Négy szoba, két fürdőszoba. HÉV megálló 10 perc gyalog. Budapest 30 perc.</leiras>
+    <tags>kert;garázs;Duna-közel;HÉV-közel;csendes;4 szoba</tags>
+    <kepek>
+      <kep>https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800</kep>
+      <kep>https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?w=800</kep>
+    </kepek>
+  </ingatlan>
+</ingatlanok>
