@@ -371,15 +371,30 @@ function PropCard({ prop, match, isTop }) {
       background: '#fff',
       border: isTop ? '1.5px solid rgba(201,150,58,0.5)' : '0.5px solid rgba(28,43,58,0.12)',
       borderRadius: 12,
-      padding: '12px 14px',
+      overflow: 'hidden',
       marginTop: 6,
       position: 'relative'
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8, marginBottom: 5 }}>
-        <div style={{ fontSize: 13, fontWeight: 500, color: '#1C2B3A' }}>{prop.cim}</div>
-        <div style={{ fontSize: 13, fontWeight: 500, color: '#C9963A', whiteSpace: 'nowrap' }}>{prop.ar}</div>
-      </div>
-      {isTop && (
+      {prop.kep_url && (
+        <div style={{ position: 'relative' }}>
+          <img
+            src={prop.kep_url}
+            alt={prop.cim}
+            style={{ width: '100%', height: 160, objectFit: 'cover', display: 'block' }}
+            onError={e => e.target.style.display = 'none'}
+          />
+          {isTop && (
+            <div style={{
+              position: 'absolute', top: 8, left: 8,
+              fontSize: 10, fontWeight: 500,
+              background: 'rgba(201,150,58,0.95)', color: '#fff',
+              padding: '3px 9px', borderRadius: 20,
+            }}>⭐ Legjobb találat</div>
+          )}
+        </div>
+      )}
+      <div style={{ padding: '12px 14px' }}>
+      {!prop.kep_url && isTop && (
         <div style={{
           display: 'inline-block', marginBottom: 4,
           fontSize: 10, fontWeight: 500,
@@ -388,6 +403,10 @@ function PropCard({ prop, match, isTop }) {
           border: '0.5px solid rgba(201,150,58,0.3)'
         }}>⭐ Legjobb találat</div>
       )}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8, marginBottom: 5 }}>
+        <div style={{ fontSize: 13, fontWeight: 500, color: '#1C2B3A' }}>{prop.cim}</div>
+        <div style={{ fontSize: 13, fontWeight: 500, color: '#C9963A', whiteSpace: 'nowrap' }}>{prop.ar}</div>
+      </div>
       <div style={{ fontSize: 11.5, color: '#5a6b7a', marginBottom: 6 }}>
         {prop.kerulet} · {prop.alapterulet} m² · {prop.szobak} szoba · {prop.emelet}. em. · {prop.tajolas}
       </div>
@@ -404,6 +423,7 @@ function PropCard({ prop, match, isTop }) {
           {match.ai_megjegyzes}
         </div>
       )}
+      </div>
     </div>
   );
 }
