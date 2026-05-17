@@ -765,8 +765,8 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
             <div style={{ background: '#1C2B3A', padding: '18px 24px', display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0 }}>
               <div style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(201,150,58,0.18)', border: '0.5px solid rgba(201,150,58,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>🏠</div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: '#fff', letterSpacing: -0.3 }}>IngatlanAI</div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 1 }}>Írja le szabadon, mit keres - mindent megértünk</div>
+                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: '#fff', letterSpacing: -0.3 }}>AI Ingatlanasszisztens</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 1 }}>Nem kell szűrőket használnia — egyszerűen írja le, mit keres</div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'rgba(255,255,255,0.55)' }}>
                 <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 0 2px rgba(74,222,128,0.25)' }}></div>
