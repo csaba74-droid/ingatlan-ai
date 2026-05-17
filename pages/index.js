@@ -565,7 +565,8 @@ export default function Home() {
 
   useEffect(() => {
     if (messages.length > 0) {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+      bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [messages]);
 
   const activeProperties = dbProperties || PROPERTIES;
