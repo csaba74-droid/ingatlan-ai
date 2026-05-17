@@ -564,6 +564,7 @@ export default function Home() {
   const inputRef = useRef(null);
 
   useEffect(() => {
+    if (messages.length > 0) {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
