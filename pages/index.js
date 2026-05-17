@@ -993,8 +993,8 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
         @keyframes blink { 0%,70%,100%{transform:scale(0.7);opacity:0.4} 35%{transform:scale(1);opacity:1} }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         textarea::placeholder { color: #96a7b5; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-thumb { background: rgba(28,43,58,0.35); border-radius: 4px; }
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-thumb { background: rgba(28,43,58,0.5); border-radius: 6px; }
       `}</style>
     </>
   );
