@@ -788,7 +788,7 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
                 <div style={{ width: 30, height: 30, borderRadius: '50%', background: '#1C2B3A', color: '#C9963A', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontFamily: "'DM Serif Display', serif", flexShrink: 0 }}>AI</div>
                 <div style={{ maxWidth: '80%' }}>
                   <div style={{ background: '#f7f8fa', border: '0.5px solid rgba(28,43,58,0.10)', borderRadius: '4px 18px 18px 18px', padding: '11px 15px', fontSize: 14, lineHeight: 1.6, color: '#1C2B3A' }}>
-                    Üdvözlöm! Az iroda virtuális asszisztense vagyok. Írja le szabadon milyen ingatlan lenne a legmegfelelőbb: kertes ház, erkélyes lakás, csendes utca, esetleg fontos az iskola közelsége? Megtalálom Önnek a legjobb ajánlatot a kínálatunkból!
+                    Üdvözlöm! Az iroda virtuális asszisztense vagyok. Írja le elképzelését milyen ingatlan lenne a legmegfelelőbb: kertes ház, erkélyes lakás, csendes utca, esetleg fontos az iskola közelsége? Megtalálom Önnek a legjobb ajánlatot a kínálatunkból!
                   </div>
                 </div>
               </div>
@@ -999,8 +999,8 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
         @keyframes blink { 0%,70%,100%{transform:scale(0.7);opacity:0.4} 35%{transform:scale(1);opacity:1} }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         textarea::placeholder { color: #96a7b5; }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: rgba(28,43,58,0.18); border-radius: 2px; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: rgba(28,43,58,0.5); border-radius: 4px; }
       `}</style>
     </>
   );
