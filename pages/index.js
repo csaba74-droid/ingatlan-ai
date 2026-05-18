@@ -563,8 +563,14 @@ export default function Home() {
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
+  const lastAiMsgRef = useRef(null);
+
   useEffect(() => {
-    if (messages.length > 0) {
+    if (messages.length === 0) return;
+    const last = messages[messages.length - 1];
+    if (last.role === 'ai' && lastAiMsgRef.current) {
+      lastAiMsgRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
       bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages]);
@@ -765,8 +771,8 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
             <div style={{ background: '#1C2B3A', padding: '18px 24px', display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0 }}>
               <div style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(201,150,58,0.18)', border: '0.5px solid rgba(201,150,58,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>🏠</div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: '#fff', letterSpacing: -0.3 }}>AI Ingatlanasszisztens</div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 1 }}>Nem kell szűrőket használnia — egyszerűen írja le, mit keres</div>
+                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: '#fff', letterSpacing: -0.3 }}>IngatlanAI</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 1 }}>Írja le szabadon, mit keres - mindent megértünk</div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'rgba(255,255,255,0.55)' }}>
                 <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 0 2px rgba(74,222,128,0.25)' }}></div>
@@ -782,7 +788,7 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
                 <div style={{ width: 30, height: 30, borderRadius: '50%', background: '#1C2B3A', color: '#C9963A', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontFamily: "'DM Serif Display', serif", flexShrink: 0 }}>AI</div>
                 <div style={{ maxWidth: '80%' }}>
                   <div style={{ background: '#f7f8fa', border: '0.5px solid rgba(28,43,58,0.10)', borderRadius: '4px 18px 18px 18px', padding: '11px 15px', fontSize: 14, lineHeight: 1.6, color: '#1C2B3A' }}>
-                    Üdvözlöm! Az iroda virtuális asszisztense vagyok. Írja le elképzelését milyen ingatlan lenne a legmegfelelőbb: kertes ház, erkélyes lakás, csendes utca, esetleg fontos az iskola közelsége? Megtalálom Önnek a legjobb ajánlatot a kínálatunkból!
+                    Üdvözlöm! Az iroda virtuális asszisztense vagyok. Írja le szabadon milyen ingatlan lenne a legmegfelelőbb: kertes ház, erkélyes lakás, csendes utca, esetleg fontos az iskola közelsége? Megtalálom Önnek a legjobb ajánlatot a kínálatunkból!
                   </div>
                 </div>
               </div>
@@ -800,7 +806,7 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
                   }}>
                     {msg.role === 'user' ? '👤' : 'AI'}
                   </div>
-                  <div style={{ maxWidth: '82%' }}>
+                  <div style={{ maxWidth: '82%' }} ref={msg.role === 'ai' && i === messages.length - 1 ? lastAiMsgRef : null}>
                     {msg.role === 'user' ? (
                       <div style={{ background: '#1C2B3A', color: '#fff', borderRadius: '18px 4px 18px 18px', padding: '11px 15px', fontSize: 14, lineHeight: 1.6 }}>
                         {msg.text}
@@ -993,8 +999,8 @@ MAGYAR NYELVHELYESSÉG - NAGYON FONTOS:
         @keyframes blink { 0%,70%,100%{transform:scale(0.7);opacity:0.4} 35%{transform:scale(1);opacity:1} }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         textarea::placeholder { color: #96a7b5; }
-        ::-webkit-scrollbar { width: 12px; }
-        ::-webkit-scrollbar-thumb { background: rgba(28,43,58,0.5); border-radius: 6px; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: rgba(28,43,58,0.18); border-radius: 2px; }
       `}</style>
     </>
   );
